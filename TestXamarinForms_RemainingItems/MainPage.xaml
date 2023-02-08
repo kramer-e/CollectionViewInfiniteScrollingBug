@@ -4,7 +4,7 @@
 
     <StackLayout>
         <Label x:Name="RemainingThresholdCount" />
-        <CollectionView ItemSizingStrategy="MeasureAllItems" IsGrouped="True" ItemsSource="{Binding Path=ListItems, Mode=TwoWay}" RemainingItemsThreshold="0" RemainingItemsThresholdReachedCommand="{Binding Path=RemainingItemsReachedCommand}" RemainingItemsThresholdReached="CollectionView_RemainingItemsThresholdReached" VerticalOptions="StartAndExpand">
+        <CollectionView ItemSizingStrategy="MeasureAllItems" IsGrouped="True" ItemsSource="{Binding Path=ListItems, Mode=TwoWay}" RemainingItemsThreshold="-1" RemainingItemsThresholdReachedCommand="{Binding Path=RemainingItemsReachedCommand}" RemainingItemsThresholdReached="CollectionView_RemainingItemsThresholdReached" VerticalOptions="StartAndExpand">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="2" Orientation="Vertical" />
             </CollectionView.ItemsLayout>
