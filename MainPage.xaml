@@ -1,21 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="InfiniteScrollingMauiVersion.MainPage">
+             xmlns:CustomControls="clr-namespace:InfiniteScrollingMauiVersion.CustomControls"
+             xmlns:local="clr-namespace:InfiniteScrollingMauiVersion"
+             x:Class="InfiniteScrollingMauiVersion.MainPage" x:DataType="local:MainPageViewModel">
 
     <StackLayout>
         <Label x:Name="RemainingThresholdCountLabel" />
-        <CollectionView ItemSizingStrategy="MeasureAllItems" IsGrouped="True" ItemsSource="{Binding Path=ListItems, Mode=TwoWay}" RemainingItemsThreshold="5" RemainingItemsThresholdReachedCommand="{Binding Path=RemainingItemsReachedCommand}" RemainingItemsThresholdReached="CollectionView_RemainingItemsThresholdReached" VerticalOptions="StartAndExpand">
+        <CustomControls:FixedInfiniteCollectionView ItemSizingStrategy="MeasureAllItems" IsGrouped="True" ItemsSource="{Binding Path=ListItems, Mode=TwoWay}" RemainingItemsThreshold="12" RemainingItemsThresholdReachedCommand="{Binding Path=RemainingItemsReachedCommand}" RemainingItemsThresholdReached="CollectionView_RemainingItemsThresholdReached" VerticalOptions="StartAndExpand">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="2" Orientation="Vertical" />
             </CollectionView.ItemsLayout>
             <CollectionView.GroupHeaderTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="local:GroupedItems">
                     <Label Text="{Binding Name}" />
                 </DataTemplate>
             </CollectionView.GroupHeaderTemplate>
             <CollectionView.GroupFooterTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="local:GroupedItems">
                     <Label Text="{Binding Count, StringFormat='Total items: {0:D}'}" Margin="0,0,0,10" />
                 </DataTemplate>
             </CollectionView.GroupFooterTemplate>
@@ -24,6 +26,6 @@
                     <Label FontSize="Large" HorizontalOptions="StartAndExpand" Text="{Binding Path=.}" />
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-        </CollectionView>
+        </CustomControls:FixedInfiniteCollectionView>
     </StackLayout>
 </ContentPage>
